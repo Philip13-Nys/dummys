@@ -12,22 +12,27 @@ import PaymentConfiguration from "./components/PaymentConfiguration";
 import AuditLogs from "./components/AuditLogs";
 import BackupManagement from "./components/BackupManagement";
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      Component: AdminLayout,
+      children: [
+        { index: true, Component: Dashboard },
+        { path: "manager", Component: ManagerDashboard },
+        { path: "receptionist", Component: ReceptionistDashboard },
+        { path: "users", Component: UserRoleManagement },
+        { path: "staff", Component: StaffProfiles },
+        { path: "commission", Component: CommissionReport },
+        { path: "sales", Component: SalesReports },
+        { path: "settings", Component: SystemSettings },
+        { path: "payments", Component: PaymentConfiguration },
+        { path: "audit", Component: AuditLogs },
+        { path: "backup", Component: BackupManagement },
+      ],
+    },
+  ],
   {
-    path: "/",
-    Component: AdminLayout,
-    children: [
-      { index: true, Component: Dashboard },
-      { path: "manager", Component: ManagerDashboard },
-      { path: "receptionist", Component: ReceptionistDashboard },
-      { path: "users", Component: UserRoleManagement },
-      { path: "staff", Component: StaffProfiles },
-      { path: "commission", Component: CommissionReport },
-      { path: "sales", Component: SalesReports },
-      { path: "settings", Component: SystemSettings },
-      { path: "payments", Component: PaymentConfiguration },
-      { path: "audit", Component: AuditLogs },
-      { path: "backup", Component: BackupManagement },
-    ],
+    basename: "/dummys",
   },
-]);
+);
